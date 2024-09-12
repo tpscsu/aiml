@@ -5,8 +5,8 @@
 
 
 try:
-    num1 = float(input('Enter the first number : '))
-    num2 = float(input('Enter the second number : '))
+    num1 = int(input('Enter the first number : '))
+    num2 = int(input('Enter the second number : '))
     product = num1 * num2
     quotient = num1 / num2
     print(num1, '*', num2, '=', product)
