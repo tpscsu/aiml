@@ -14,4 +14,3 @@ try:
 except ValueError:
     print('Invalid Inputs - Expected a number')
     exit()
-
