@@ -5,7 +5,7 @@
 #
 
 try:
-    current_time = int(input('Enter the current time in hours (0-23)'))
+    current_time = int(input('Enter the current time in hours (0-23) : '))
     if current_time < 0 or current_time > 23:
         print('Invalid input. Expected numeric value between 0 - 23')
         exit()
