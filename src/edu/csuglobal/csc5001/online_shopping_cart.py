@@ -1,12 +1,16 @@
 class ItemToPurchase:
-    def __init__(self, item_name="none", item_price=0.0, item_quantity=0):
+    def __init__(self, item_name="none", item_description="none", item_price=0.0, item_quantity=0):
         self.item_name = item_name
+        self.item_description = item_description
         self.item_price = item_price
         self.item_quantity = item_quantity
 
     def print_item_cost(self):
         total_cost = self.item_price * self.item_quantity
         print(f"{self.item_name} {self.item_quantity} @ ${self.item_price} = ${total_cost}")
+
+    def print_item_description(self):
+        print(f"{self.item_name}: {self.item_description}")
 
 
 class ShoppingCart:
@@ -71,7 +75,15 @@ class ShoppingCart:
             print(f"{self.customer_name}'s Shopping Cart - {self.current_date}")
             print("Item Descriptions")
             for item in self.cart_items:
-                print(f"{item.item_name}")
+                item.print_item_description()
+
+
+def get_valid_input(prompt, input_type):
+    while True:
+        try:
+            return input_type(input(prompt))
+        except ValueError:
+            print(f"Invalid input. Please enter a valid {input_type.__name__}.")
 
 
 def print_menu(cart):
@@ -87,21 +99,24 @@ def print_menu(cart):
 
         if choice == 'a':
             item_name = input("Enter the item name: ")
-            item_price = float(input("Enter the item price: "))
-            item_quantity = int(input("Enter the item quantity: "))
-            item = ItemToPurchase(item_name, item_price, item_quantity)
+            item_description = input("Enter the item description: ")
+            item_price = get_valid_input("Enter the item price: ", float)
+            item_quantity = get_valid_input("Enter the item quantity: ", int)
+            item = ItemToPurchase(item_name, item_description, item_price, item_quantity)
             cart.add_item(item)
+            print(f"Added {item_quantity} of {item_name} to the cart.")
 
         elif choice == 'r':
             item_name = input("Enter name of item to remove: ")
+            print("REMOVE ITEM FROM CART")
             cart.remove_item(item_name)
 
         elif choice == 'c':
             item_name = input("Enter the item name: ")
-            item_price = float(input("Enter the new price (or leave as 0 for no change): "))
-            item_quantity = int(input("Enter the new quantity (or leave as 0 for no change): "))
-            item = ItemToPurchase(item_name, item_price, item_quantity)
+            item_quantity = get_valid_input("Enter the new quantity: ", int)
+            item = ItemToPurchase(item_name=item_name, item_quantity=item_quantity)
             cart.modify_item(item)
+            print(f"Updated {item_name}'s quantity to {item_quantity}.")
 
         elif choice == 'i':
             cart.print_descriptions()
@@ -119,6 +134,9 @@ def print_menu(cart):
 def main():
     customer_name = input("Enter customer's name: ")
     current_date = input("Enter today's date: ")
+
+    print(f"Customer name: {customer_name}")
+    print(f"Today's date: {current_date}")
 
     cart = ShoppingCart(customer_name, current_date)
 
