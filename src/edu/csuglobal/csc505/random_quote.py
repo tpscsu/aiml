@@ -3,20 +3,15 @@ import random
 
 def generate_quote():
     quotes = [
-        "The smallest step in the right direction can end up being the biggest step of your life.",
-        "Challenges are what make life interesting; overcoming them is what makes life meaningful.",
-        "Your growth begins where your comfort zone ends.",
+        "Your journey is as unique as your fingerprint.",
         "Focus on the step in front of you, not the whole staircase.",
-        "Don’t count the days; make the days count.",
-        "Success is the sum of small efforts repeated day in and day out.",
-        "A goal without a plan is just a wish.",
         "Every accomplishment starts with the decision to try.",
         "When you feel like giving up, remember why you started.",
-        "What you do today can improve all your tomorrows."
+        "Even if the ground shakes , your hands shouldn't."
     ]
 
     random_quote = random.choice(quotes)
-    print("\nHere’s your motivational quote:")
+    print("\nQuote for you:")
     print(f"\"{random_quote}\"")
 
 
