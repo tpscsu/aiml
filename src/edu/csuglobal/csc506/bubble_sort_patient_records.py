@@ -7,7 +7,7 @@ def bubble_sort(records):
     return records
 
 def main():
-    patient_records = ["Taylor", "Smith", "Johnson", "Lee", "Brown", "Davis", "Adams"]
+    patient_records = ["Tigin", "Philip", "Samuel", "Tommy", "Lee", "Jones", "Adams"]
     print("Original Records:")
     print(patient_records)
 
